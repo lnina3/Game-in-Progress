@@ -3,39 +3,48 @@ window.addEventListener('keydown', moving);
 window.addEventListener('keyup', moving);
 var moveSpeed=5;
 
-function startGame(){
+	
+function startGame() {
+    
 	myGameArea.start();
-	myGamePiece = new component (20, 20, "red" , 10, 120);
+    myGamePiece = new component(30, 30, "hobbit.png", 10, 400, "image");
+    
+	
 }
-
 var myGameArea = {
-	canvas : document.createElement("canvas"),
-	start : function() {
-		this.canvas.width = 900;
-		this.canvas.height = 500;
-		this.context = this.canvas.getContext("2d");
-		document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-		this.interval = setInterval(updateGameArea, 20);
-	},
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 1200;
+        this.canvas.height = 550;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+	this.interval = setInterval(updateGameArea, 20);
+    },
 	clear: function(){
 		this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
 	}
-
 }
-
-function component(width, height, color, x, y){
+function component(width, height, color, x, y, type) {
+    this.type = type;
+	if (type == "image") {
+		this.image = new Image();
+		this.image.src = color;
+	}
 	this.width = width;
-	this.height = height;
-	this.x = x;
-	this.y = y;
-	ctx = myGameArea.context;
-	img = new Image();
-	img.src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Breathe-face-smile.svg/1200px-Breathe-face-smile.svg.png';
-	img.onload=function(){
-		ctx.drawImage(img, x, y, width, height);
+    this.height = height;  
+	this.x=x;
+	this.y=y;
+	
+	this.update = function(){
+   	 ctx = myGameArea.context;
+    	if (type == "image") {
+	ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+	} else {
+	ctx.fillStyle = color;
+	cts.fillRect(this.x, this.y, this.width, this.height);
+	}
 	}
 }
-
 function updateGameArea(){
 	myGameArea.clear();
 	//myGamePiece.newPos();
