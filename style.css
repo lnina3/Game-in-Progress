@@ -1,0 +1,12 @@
+h1 {
+	color: blue;
+	font-family: Vivaldi;
+	text-align: center;
+}
+
+
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+    background: url(http://www.breakpoint.org/wp-content/uploads/2018/08/TDP-8-24-2018.png) 0 0;
+}
