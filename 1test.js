@@ -4,12 +4,9 @@ window.addEventListener('keyup', moving);
 var moveSpeed=5;
 
 	
-function startGame() {
-    
-	myGameArea.start();
+function startGame() {   
     myGamePiece = new component(30, 30, "hobbit.png", 10, 400, "image");
-    
-	
+    myGameArea.start();	
 }
 var myGameArea = {
     canvas : document.createElement("canvas"),
