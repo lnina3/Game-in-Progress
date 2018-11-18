@@ -1,0 +1,23 @@
+function fire() {
+	if (projectile.x <= 0 || projectile.y <= 0) {
+		projectile.x -= 0;
+		projectile.x = 1100;
+		projectile.y = 70;
+}
+	else if (myGamePiece.x < (projectile.x + projectile.width - 5) && 
+			(myGamePiece.x + myGamePiece.width - 15) > projectile.x &&
+			myGamePiece.y < (projectile.y + projectile.height - 5) &&
+			(myGamePiece.y + myGamePiece.height - 15) > projectile.y) {
+		myGamePiece.health -= 34;
+		projectile.x -= 0;
+		projectile.x = 1100;
+		projectile.y = 70;
+}
+	else if (myGamePiece.health <= 0) {
+			clearInterval(myVar);
+}
+	else {
+		projectile.x -= moveSpeed * 2;
+		projectile.y += moveSpeed;
+}
+}
